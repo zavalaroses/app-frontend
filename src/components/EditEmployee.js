@@ -6,24 +6,24 @@ const endpoint = 'http://localhost:8000/api/employee/'
 
 const EditEmployee = () => {
 
-    const [name, setName] = useState('')
-    const [last_name, setLastName] = useState('')
-    const [job, setJob] = useState('')
+    const [firstName, setFirstName] = useState('')
+    const [lastName, setLastName] = useState('')
+    const [email, setEmail] = useState('')
     const [phone, setPhone] = useState('')
-    const [address, setAddress] = useState('')
-    const [age, setAge] = useState('')
+    const [city, setCity] = useState('')
+    const [country, setCountry] = useState('')
     const navigate = useNavigate()
     const {id} = useParams()
 
     const update = async (e) => {
         e.preventDefault();
         await axios.put(`${endpoint}${id}`, {
-            name: name,
-            last_name: last_name,
-            job: job,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
             phone: phone,
-            address: address,
-            age: age
+            city: city,
+            country: country
         })
         navigate('/')
     }
@@ -32,12 +32,12 @@ const EditEmployee = () => {
 
         const getEmployeeById = async () => {
             const response = await axios.get(`${endpoint}${id}`)
-            setName(response.data.name)
-            setLastName(response.data.last_name)
-            setJob(response.data.job)
+            setFirstName(response.data.firstName)
+            setLastName(response.data.lastName)
+            setEmail(response.data.email)
             setPhone(response.data.phone)
-            setAddress(response.data.address)
-            setAge(response.data.age)
+            setCity(response.data.city)
+            setCountry(response.data.country)
         }
         getEmployeeById()
         
@@ -49,8 +49,8 @@ const EditEmployee = () => {
             <div className='mb-3'>
                 <label className='form-label'>Name</label>
                 <input 
-                    value={name} 
-                    onChange={ (e)=> setName(e.target.value)}
+                    value={firstName} 
+                    onChange={ (e)=> setFirstName(e.target.value)}
                     type='text'
                     className='form-control'
                 />
@@ -59,7 +59,7 @@ const EditEmployee = () => {
             <div className='mb-3'>
                 <label className='form-label'>Last Name</label>
                 <input 
-                    value={last_name} 
+                    value={lastName} 
                     onChange={ (e)=> setLastName(e.target.value)}
                     type='text'
                     className='form-control'
@@ -67,10 +67,10 @@ const EditEmployee = () => {
             </div>
 
             <div className='mb-3'>
-                <label className='form-label'>Job</label>
+                <label className='form-label'>Email</label>
                 <input 
-                    value={job} 
-                    onChange={ (e)=> setJob(e.target.value)}
+                    value={email} 
+                    onChange={ (e)=> setEmail(e.target.value)}
                     type='text'
                     className='form-control'
                 />
@@ -87,20 +87,20 @@ const EditEmployee = () => {
             </div>
 
             <div className='mb-3'>
-                <label className='form-label'>Address</label>
+                <label className='form-label'>City</label>
                 <input 
-                    value={address} 
-                    onChange={ (e)=> setAddress(e.target.value)}
+                    value={city} 
+                    onChange={ (e)=> setCity(e.target.value)}
                     type='text'
                     className='form-control'
                 />
             </div>
 
             <div className='mb-3'>
-                <label className='form-label'>Age</label>
+                <label className='form-label'>Country</label>
                 <input 
-                    value={age} 
-                    onChange={ (e)=> setAge(e.target.value)}
+                    value={country} 
+                    onChange={ (e)=> setCountry(e.target.value)}
                     type='text'
                     className='form-control'
                 />
