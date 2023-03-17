@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-const endpoint = 'http://localhost:8000/api/employee'
+const endpoint = 'http://127.0.0.1:3000/contacts/create'
 const CreateEmployee = () => {
 
     const [firstName, setFirstName] = useState('')
@@ -15,7 +15,7 @@ const CreateEmployee = () => {
 
     const store = async (e) => {
         e.preventDefault();
-        await axios.post(endpoint, {name: firstName, lastName: lastName, email: email, phone: phone, city: city, country: country})
+        await axios.post(endpoint, {firstName: firstName, lastName: lastName, email: email, phone: phone, city: city, country: country})
         navigate('/')
 
     }

@@ -2,7 +2,7 @@ import axios from 'axios';
 import React,{useState, useEffect} from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-const endpoint = 'http://localhost:8000/api/employee/'
+const endpoint = 'http://127.0.0.1:3000/contacts'
 
 const EditEmployee = () => {
 
@@ -17,7 +17,8 @@ const EditEmployee = () => {
 
     const update = async (e) => {
         e.preventDefault();
-        await axios.put(`${endpoint}${id}`, {
+       
+        await axios.put(`${endpoint}/${id}/update`, {
             firstName: firstName,
             lastName: lastName,
             email: email,
@@ -31,13 +32,14 @@ const EditEmployee = () => {
     useEffect( () =>{
 
         const getEmployeeById = async () => {
-            const response = await axios.get(`${endpoint}${id}`)
-            setFirstName(response.data.firstName)
-            setLastName(response.data.lastName)
-            setEmail(response.data.email)
-            setPhone(response.data.phone)
-            setCity(response.data.city)
-            setCountry(response.data.country)
+            const response = await axios.get(`${endpoint}/${id}`)
+            const {data} = response
+            setFirstName(data.firstName)
+            setLastName(data.lastName)
+            setEmail(data.email)
+            setPhone(data.phone)
+            setCity(data.city)
+            setCountry(data.country)
         }
         getEmployeeById()
         

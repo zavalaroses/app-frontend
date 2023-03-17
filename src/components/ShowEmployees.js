@@ -16,7 +16,7 @@ const ShowEmployees =()=>{
     }
 
     const deleteEmployee = async (id) =>{
-        await axios.delete(`${endpoint}/employee/${id}`);
+        await axios.delete(`${endpoint}/${id}/delete`);
         getAllEmployees();
 
     }
